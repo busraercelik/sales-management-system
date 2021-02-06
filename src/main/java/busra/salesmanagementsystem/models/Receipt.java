@@ -13,7 +13,7 @@ public class Receipt {
     Long id;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Order order;
+    private SalesOrder salesOrder;
     @Temporal(TemporalType.DATE)
     private Date receiptDate;
     private String totalPricePaid;

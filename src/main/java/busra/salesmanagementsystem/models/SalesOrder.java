@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="SalesOrder")
-public class Order {
+public class SalesOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany
-    @JoinColumn(name = "order_item_id", referencedColumnName = "id")
+    @JoinColumn(name = "sales_order_id", referencedColumnName = "id")
     private List<OrderItem> orderItems;
     private Date orderDate;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
