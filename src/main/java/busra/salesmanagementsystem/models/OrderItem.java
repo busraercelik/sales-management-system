@@ -11,6 +11,6 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String itemName;
-    private String quantity;
-    private String price;
+    private Integer quantity;
+    private Integer price;
 }

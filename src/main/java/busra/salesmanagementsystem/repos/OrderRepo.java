@@ -1,5 +1,6 @@
 package busra.salesmanagementsystem.repos;
 
+
 import busra.salesmanagementsystem.models.SalesOrder;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

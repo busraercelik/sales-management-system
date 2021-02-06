@@ -14,7 +14,7 @@ public class SalesOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL )
     @JoinColumn(name = "sales_order_id", referencedColumnName = "id")
     private List<OrderItem> orderItems;
     private Date orderDate;
