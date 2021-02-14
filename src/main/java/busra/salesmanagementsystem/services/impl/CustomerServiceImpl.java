@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerPK customerPK = new CustomerPK();
         customerPK.setPhoneNo(phoneNo);
         customerPK.setCardNumber(cardNumber);
-        return customerRepo.findById(customerPK).orElse(null);
+        return customerRepo.findById(customerPK).get();
     }
 
     @Override

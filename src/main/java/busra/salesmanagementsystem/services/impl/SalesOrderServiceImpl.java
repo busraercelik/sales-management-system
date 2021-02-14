@@ -6,21 +6,23 @@ import busra.salesmanagementsystem.models.Customer;
 import busra.salesmanagementsystem.models.Inventory;
 import busra.salesmanagementsystem.models.OrderItem;
 import busra.salesmanagementsystem.models.SalesOrder;
-import busra.salesmanagementsystem.repos.OrderRepo;
+import busra.salesmanagementsystem.repos.SalesOrderRepo;
 import busra.salesmanagementsystem.services.CustomerService;
 import busra.salesmanagementsystem.services.InventoryService;
-import busra.salesmanagementsystem.services.OrderService;
+import busra.salesmanagementsystem.services.SalesOrderService;
+import busra.salesmanagementsystem.utils.DateConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class SalesOrderServiceImpl implements SalesOrderService {
 
     @Autowired
-    OrderRepo orderRepo;
+    SalesOrderRepo salesOrderRepo;
     @Autowired
     CustomerService customerService;
     @Autowired
@@ -66,6 +68,27 @@ public class OrderServiceImpl implements OrderService {
         salesOrder.setCustomer(customer);
         salesOrder.setOrderDate(new Date());
         salesOrder.setOrderStatus(OrderStatus.PENDING);
-        return orderRepo.save(salesOrder);
+        return salesOrderRepo.save(salesOrder);
     }
+
+    @Override
+    public List<SalesOrder> getAllSalesOnOrderDate(Date date) {
+        return salesOrderRepo.findByOrderDate(date);
+    }
+
+    @Override
+    public List<SalesOrder> getAllSalesOrder() {
+        return salesOrderRepo.findAll();
+    }
+
+    @Override
+    public SalesOrder update(SalesOrder so) {
+        return salesOrderRepo.save(so);
+    }
+
+    @Override
+    public SalesOrder getOrderById(Long id) {
+        return salesOrderRepo.findById(id).orElse(null);
+    }
+
 }

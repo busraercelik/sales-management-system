@@ -17,12 +17,14 @@ public class SalesOrder {
     @OneToMany(cascade = CascadeType.ALL )
     @JoinColumn(name = "sales_order_id", referencedColumnName = "id")
     private List<OrderItem> orderItems;
+    @Temporal(TemporalType.DATE)
     private Date orderDate;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumns({
             @JoinColumn(referencedColumnName = "cardNumber", name = "customer_card_number"),
             @JoinColumn(referencedColumnName = "phoneNo", name = "customer_phone_number")
     })
     private Customer customer;
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 }
